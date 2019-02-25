@@ -21,11 +21,12 @@ namespace GitHubFolderDownloader.Core
             var taskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
             Task.Factory.StartNew(() =>
             {
-                if (!NetworkStatus.IsConnectedToInternet())
-                {
-                    AppMessenger.Messenger.NotifyColleagues("ShowLog", "The internet connection was not found.");
-                    return null;
-                }
+                // Disable for China
+                //if (!NetworkStatus.IsConnectedToInternet())
+                //{
+                //    AppMessenger.Messenger.NotifyColleagues("ShowLog", "The internet connection was not found.");
+                //    return null;
+                //}
 
                 var entries = getGitHubBranches();
                 if (!entries.Any())
